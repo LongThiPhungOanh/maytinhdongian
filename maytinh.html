@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    table, tr, td {
+        border: 1px solid white;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 5px;
+    }
+    td{
+        width: 30px;
+        height: 30px;
+    }
+    .clas{
+        background-color: palevioletred;
+        color: white;
+    }
+</style>
+<script>
+    var condition ="";
+    const conditions = ['+', '-', '*', '/'];
+    function getNum(num) {
+        if(conditions.includes(condition[condition.length-1]) && conditions.includes(num)){
+            condition = condition.slice(0, condition.length-1);
+            condition = condition.concat(num);
+            document.getElementById("screen").value = condition;
+        }else {
+            condition = condition.concat(num);
+            document.getElementById("screen").value = condition;
+        }
+    }
+    function capculate() {
+        var x = document.getElementById("screen");
+        x.value = eval(x.value);
+    }
+    function fnClear() {
+        condition = "";
+        document.getElementById("screen").value = condition;
+    }
+
+</script>
+
+<table>
+    <tr>
+        <td style="background-color: red" colspan="4"><input id="screen" type="text"></td>
+    </tr>
+    <tr class="clas">
+        <td class="clas" onclick="getNum(1)">1</td>
+        <td class="clas" onclick="getNum(2)">2</td>
+        <td class="clas" onclick="getNum(3)">3</td>
+        <td class="clas" onclick="getNum('+')">+</td>
+
+    </tr>
+    <tr class="clas">
+        <td class="clas" onclick="getNum(4)">4</td>
+        <td class="clas" onclick="getNum(5)">5</td>
+        <td class="clas" onclick="getNum(6)">6</td>
+        <td class="clas" onclick="getNum('-')">-</td>
+    </tr>
+    <tr class="clas">
+        <td class="clas" onclick="getNum(7)">7</td>
+        <td class="clas" onclick="getNum(8)">8</td>
+        <td class="clas" onclick="getNum(9)">9</td>
+        <td class="clas" onclick="getNum('*')">*</td>
+    </tr>
+    <tr class="clas">
+        <td class="clas" onclick="fnClear()">C</td>
+        <td class="clas" onclick="getNum('0')">0</td>
+        <td class="clas" onclick="capculate()">=</td>
+        <td class="clas" onclick="getNum('/')">/</td>
+    </tr>
+</table>
+</body>
+</html>
